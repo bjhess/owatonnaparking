@@ -1,0 +1,63 @@
+body {
+	background: #ddd ;
+	color: #333 ;
+	max-width: 800px ;
+	margin: auto ;
+	padding: 0 16px ;
+	margin-bottom: 500px ;
+	text-align: center;
+	font-family: Monaco, "Andale Mono", "Lucida Console", monospace ;
+}
+
+h1 {
+	text-align: center ;
+}
+
+footer {
+	text-align: center ;
+	font-family: Verdana, Arial, sans-serif ;
+}
+
+small {
+	font-size: 0.7em;
+}
+
+img {
+	max-width: 600px ;
+	width: 100% ;
+	margin: auto ;
+	display: block ;
+}
+
+#now {
+	font-size: 1.5em;
+	color: maroon;
+}
+
+#park {
+	font-size: 2.5em;
+	color: green;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background: #333 ;
+		color: #ddd ;
+	}
+	a {
+		color: lightblue ;
+	}
+	a:visited {
+		color: gray ;
+	}
+	h2 {
+		color: inherit ;
+	}
+}
+
+@media print {
+	a[href] {
+		text-decoration: none ;
+		color: #333 ;
+	}
+}

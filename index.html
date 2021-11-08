@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <title>Owatonna Even Odd Parking</title>
+  <meta name="description" content="Telling you which side of the street should you park on in Owatonna, Minnesota.">
+</head>
+<body>
+  <div class="banner">
+    <h1>Owatonna Even Odd Parking</h1>
+    <hr/>
+  </div>
+
+  <p>It is <span id="now"></span> in Owatonna.</p>
+  <p>Park on<span id="parkArticle"></span></p>
+  
+  <p id="park">ANY</p>
+
+  <p>side of the street <span id="parkExplanation">because it is not the winter parking season</span>.</p>
+
+  <small>
+    <a href="http://ci.owatonna.mn.us/514/Public-Winter-Parking">Owatonna winter parking rules</a> | 
+    <a href="https://gis.ci.owatonna.mn.us/portal/apps/webappviewer/index.html?id=a514111773524a1fa3f266bfa1c5b7ed">Owatonna parking map web app</a>
+  </small>
+
+  <footer>
+    <hr/>
+    <p>
+
+      <small>
+        A <a href="http://bjhess.com">bjhess</a> joint.
+      </small>
+
+    </p>
+  </footer>
+
+
+    <script>
+      "use strict";
+      var now = new Date();
+      var month = now.getMonth();
+      var day = now.getDate();
+      var hour = now.getHours();
+      const nowDateOptions = { 
+        month: 'short', 
+        day: 'numeric', 
+        timeZone: 'America/Chicago' };
+      const nowTimeOptions = {
+        hour: '2-digit', 
+        minute: '2-digit', 
+        timeZone: 'America/Chicago' };
+      const excludedMonths = [3, 4, 5, 6, 7, 8, 9];
+
+      // Show current date and time in Owatonna
+      var nowString = 
+        now.toLocaleTimeString("en-US", nowTimeOptions) +
+        " on " +
+        now.toLocaleDateString("en-US", nowDateOptions);
+      document.getElementById("now").innerHTML = nowString;
+
+      var park = "ANY";
+      var parkExplanation = "because it is not the winter parking season";
+      var parkArticle = "";
+      if (excludedMonths.includes(month) ||
+          (10 == month && day < 14) ||
+          (10 == month && day == 14 && hour < 12) ||
+          (2 == month && day == 31 && hour > 11)) {
+      // if (false) {
+        ;
+      } else if (0 <= hour && hour < 12) {
+        parkArticle = " the";
+        park = evenOrOdd(day);
+        parkExplanation = "because you are currently in the towing window for today";
+      } else {
+        var tomorrow = new Date();
+        tomorrow.setDate(day + 1);
+        parkArticle = " the";
+        park = evenOrOdd(tomorrow.getDate());
+        parkExplanation = "because the towing window is in the pre-dawn hours of " + tomorrow.toLocaleDateString("en-US", nowDateOptions);
+      }
+
+      document.getElementById("park").innerHTML = park;
+      document.getElementById("parkArticle").innerHTML = parkArticle;
+      document.getElementById("parkExplanation").innerHTML = parkExplanation;
+
+      function evenOrOdd(day) {
+        return (0 == day % 2 ? "EVEN" : "ODD");
+      }
+    </script>
+
+</body>
+</html>
+
