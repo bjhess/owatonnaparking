@@ -5,20 +5,12 @@ var now = new Date();
 var month = now.getMonth();
 var day = now.getDate();
 var hour = now.getHours();
-const nowDateOptions = { 
-  month: 'short', 
-  day: 'numeric', 
-  timeZone: 'America/Chicago' };
-const nowTimeOptions = {
-  hour: '2-digit', 
-  minute: '2-digit', 
-  timeZone: 'America/Chicago' };
 
 // Current date and time in Owatonna
 var nowString = 
-  now.toLocaleTimeString("en-US", nowTimeOptions) +
+  now.toLocaleTimeString("en-US", Worker.timeOptions) +
   " on " +
-  now.toLocaleDateString("en-US", nowDateOptions);
+  now.toLocaleDateString("en-US", Worker.dateOptions);
 
 window.onload = function() {
   var parkingDeets = Worker.parkingDeets(now);

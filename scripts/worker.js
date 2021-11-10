@@ -2,6 +2,16 @@ function evenOrOdd(day) {
   return (0 == day % 2 ? "EVEN" : "ODD");
 }
 
+export const dateOptions = { 
+  month: 'short', 
+  day: 'numeric', 
+  timeZone: 'America/Chicago' };
+
+export const timeOptions = {
+  hour: '2-digit', 
+  minute: '2-digit', 
+  timeZone: 'America/Chicago' };
+
 export function parkingDeets(date) {
   var month = date.getMonth();
   var day = date.getDate();
@@ -23,11 +33,11 @@ export function parkingDeets(date) {
     park = evenOrOdd(day);
     parkExplanation = "because you are currently in the towing window for today";
   } else {
-    var tomorrow = new Date();
+    var tomorrow = new Date(date);
     tomorrow.setDate(day + 1);
     parkArticle = " the";
     park = evenOrOdd(tomorrow.getDate());
-    parkExplanation = "because the towing window is in the pre-dawn hours of " + tomorrow.toLocaleDateString("en-US", nowDateOptions);
+    parkExplanation = "because the towing window is in the pre-dawn hours of " + tomorrow.toLocaleDateString("en-US", dateOptions);
   }
 
   const deets = new Map();

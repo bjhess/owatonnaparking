@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="./style.css">
+  <title>TESTING YOUR PARKING</title>
+</head>
+<body>
+  <div class="banner">
+    <h1>TESTING YOUR PARKING</h1>
+    <hr/>
+  </div>
+
+  <div id="testResults">
+    
+  </div>
+
+  <script type="module">
+    import * as Worker from '../scripts/worker.js';
+    // Daylight Savings Time ends first Sunday in November and 
+    // beings on second Sunday of March.
+    // GMT offset for central DST is -05:00, otherwise -06:00
+
+    const dateOptions = { 
+      month: 'short', 
+      day: 'numeric', 
+      timeZone: 'America/Chicago' };
+    const timeOptions = {
+      hour: '2-digit', 
+      minute: '2-digit', 
+      timeZone: 'America/Chicago' };
+
+    var park = "";
+    var parkArticle = "";
+    var parkExplanation = "";
+
+    // Nov 14, 11:59am
+    printDateInfo(new Date('November 14, 2021 11:59:59 GMT-06:00'));
+    
+    // Nov 14, 12:00pm
+    printDateInfo(new Date('November 14, 2021 12:00:00 GMT-06:00'));
+
+    // Dec
+    printDateInfo(new Date('December 2, 2021 11:59:59 GMT-06:00'));
+    printDateInfo(new Date('December 2, 2021 12:00:00 GMT-06:00'));
+
+    // Jan
+    printDateInfo(new Date('January 18, 2022 23:59:59 GMT-06:00'));
+    printDateInfo(new Date('January 19, 2022 00:00:00 GMT-06:00'));
+
+    // * Feb
+    printDateInfo(new Date('February 14, 2022 08:00:00 GMT-06:00'));
+    printDateInfo(new Date('February 14, 2022 14:00:00 GMT-06:00'));
+
+    // * Mar 31, 11:59am
+    printDateInfo(new Date('March 31, 2022 11:59:59 GMT-05:00'));
+
+    // * Mar 31, 12:00pm
+    printDateInfo(new Date('March 31, 2021 12:00:00 GMT-05:00'));
+
+    // * Apr
+    printDateInfo(new Date('April 10, 2022 14:00:00 GMT-06:00'));
+
+    // * Oct
+    printDateInfo(new Date('October 31, 2022 14:00:00 GMT-06:00'));
+
+    function print(text) {
+      document.getElementById("testResults").innerHTML += text + '<br />'
+    }
+
+    function printHeading(text) {
+      print('<br /><b><u>' + text + '</u></b>');
+    }
+
+    function printDateHeading(date) {
+      var testDateString = 
+        date.toLocaleDateString("en-US", dateOptions) +
+        " at " +
+        date.toLocaleTimeString("en-US", timeOptions);
+      printHeading(testDateString);
+    }
+
+    function printParkingDeets(parkingDeets) {
+      print("Even/Odd: &nbsp&nbsp&nbsp[" + parkingDeets.get('park') + ']');
+      print("Article: &nbsp&nbsp&nbsp&nbsp[" + parkingDeets.get('parkArticle') + ']');
+      print("Explanation: [" + parkingDeets.get('parkExplanation') + ']');
+    }
+
+    function printDateInfo(date) {
+      var parkingDeets = Worker.parkingDeets(date);
+      printDateHeading(date);
+      printParkingDeets(parkingDeets);
+    }
+  </script>
+
+</body>
+</html>
+
