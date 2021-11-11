@@ -1,0 +1,19 @@
+{
+  "background_color": #4169e1,
+
+
+
+  "background_color": "purple",
+  "description": "Telling you which side of the street you should park on in Owatonna, Minnesota.",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "icon/owatonnaparking-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "Owatonna Even/Odd Parking",
+  "short_name": "Owatonna Parking",
+  "start_url": "./index.html"
+}
