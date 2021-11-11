@@ -1,9 +1,5 @@
 {
   "background_color": #4169e1,
-
-
-
-  "background_color": "purple",
   "description": "Telling you which side of the street you should park on in Owatonna, Minnesota.",
   "display": "fullscreen",
   "icons": [
