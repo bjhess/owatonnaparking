@@ -3,7 +3,7 @@ function evenOrOdd(day) {
 }
 
 export const dateOptions = { 
-  month: 'short', 
+  month: 'long', 
   day: 'numeric', 
   timeZone: 'America/Chicago' };
 
