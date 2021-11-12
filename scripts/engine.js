@@ -25,4 +25,5 @@ window.onload = function() {
   loadEvenOdd();
 }
 
+// This works for most cases.
 window.onfocus = loadEvenOdd;
