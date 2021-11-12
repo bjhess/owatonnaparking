@@ -4,7 +4,7 @@
   "display": "fullscreen",
   "icons": [
     {
-      "src": "icon/owatonnaparking-icon.png",
+      "src": "icons/owatonna_parking.png",
       "sizes": "192x192",
       "type": "image/png"
     }
