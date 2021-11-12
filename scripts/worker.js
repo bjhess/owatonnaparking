@@ -8,7 +8,7 @@ export const dateOptions = {
   timeZone: 'America/Chicago' };
 
 export const timeOptions = {
-  hour: '2-digit', 
+  hour: 'numeric', 
   minute: '2-digit', 
   timeZone: 'America/Chicago' };
 
