@@ -24,3 +24,5 @@ function loadEvenOdd() {
 window.onload = function() {
   loadEvenOdd();
 }
+
+window.onfocus = loadEvenOdd;
