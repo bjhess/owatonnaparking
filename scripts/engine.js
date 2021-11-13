@@ -2,18 +2,15 @@
 import * as Worker from './worker.js';
 
 function loadEvenOdd() {
-  var now = new Date();
-  var month = now.getMonth();
-  var day = now.getDate();
-  var hour = now.getHours();
+  const now = new Date();
 
   // Current date and time in Owatonna
-  var nowString = 
+  const nowString = 
     now.toLocaleTimeString("en-US", Worker.timeOptions) +
     " on " +
     now.toLocaleDateString("en-US", Worker.dateOptions);
 
-  var parkingDeets = Worker.parkingDeets(now);
+  const parkingDeets = Worker.parkingDeets(now);
 
   document.getElementById("now").innerHTML = nowString;
   document.getElementById("park").innerHTML = parkingDeets.get('park');
