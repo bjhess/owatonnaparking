@@ -25,5 +25,8 @@ window.onload = function() {
   loadEvenOdd();
 }
 
-// This works for most cases.
+// This works for most cases
 window.onfocus = loadEvenOdd;
+
+// Update every 60 seconds
+setInterval(loadEvenOdd, 60000);
