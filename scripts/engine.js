@@ -23,7 +23,11 @@ window.onload = function() {
 }
 
 // This works for most cases
-window.onfocus = loadEvenOdd;
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    loadEvenOdd();
+  }
+});
 
 // Update every 60 seconds
 setInterval(loadEvenOdd, 60000);
