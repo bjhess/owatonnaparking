@@ -13,13 +13,13 @@ export const timeOptions = {
   timeZone: 'America/Chicago' };
 
 export function parkingDeets(date) {
-  var month = date.getMonth();
-  var day = date.getDate();
-  var hour = date.getHours();
-  var excludedMonths = [3, 4, 5, 6, 7, 8, 9];
-  var park = "ANY";
-  var parkExplanation = "because it is not the winter parking season";
-  var parkArticle = "";
+  const month = date.getMonth();
+  const day = date.getDate();
+  const hour = date.getHours();
+  const excludedMonths = [3, 4, 5, 6, 7, 8, 9];
+  let park = "ANY";
+  let parkExplanation = "because it is not the winter parking season";
+  let parkArticle = "";
 
 
   if (excludedMonths.includes(month) ||
@@ -33,7 +33,7 @@ export function parkingDeets(date) {
     park = evenOrOdd(day);
     parkExplanation = "because you are currently in the towing window for today";
   } else {
-    var tomorrow = new Date(date);
+    const tomorrow = new Date(date);
     tomorrow.setDate(day + 1);
     parkArticle = " the";
     park = evenOrOdd(tomorrow.getDate());
