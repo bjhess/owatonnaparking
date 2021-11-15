@@ -31,7 +31,7 @@ export function parkingDeets(date) {
   } else if (0 <= hour && hour < 12) {
     parkArticle = " the";
     park = evenOrOdd(day);
-    parkExplanation = "because you are currently in the towing window for today";
+    parkExplanation = "because it is currently the towing window for today";
   } else {
     const tomorrow = new Date(date);
     tomorrow.setDate(day + 1);
