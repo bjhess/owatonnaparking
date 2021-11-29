@@ -18,8 +18,23 @@ function loadEvenOdd() {
   document.getElementById("parkExplanation").innerHTML = parkingDeets.get('parkExplanation');
 }
 
+function loadLights() {
+  const now = new Date();
+  if (now.getMonth() == 11 && now.getDate() <= 25) {
+    const lines = document.querySelectorAll(".line")
+    for (var i = 0; i < lines.length; i++) {
+      lines[i].style.display = "none"
+    }
+    const lights = document.querySelectorAll(".lights")
+    for (var i = 0; i < lights.length; i++) {
+      lights[i].style.display = ""
+    }
+  }
+}
+
 window.onload = function() {
   loadEvenOdd();
+  loadLights();
 }
 
 // This works for most cases
