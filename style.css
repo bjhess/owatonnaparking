@@ -25,7 +25,6 @@ a:hover {
 }
 
 .spacer {
-	height: 56px;
 	display: flex;
 	align-items: center;
 }
@@ -42,7 +41,9 @@ a:hover {
 }
 
 footer {
+	border-top: 1px solid #999;
 	font-size: 14px;
+	padding: 10px 0 0 0;
 }
 
 footer ul {
