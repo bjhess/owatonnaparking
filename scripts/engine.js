@@ -1,8 +1,7 @@
 "use strict";
 import * as Worker from './worker.js';
 
-function loadEvenOdd() {
-  const now = new Date();
+function loadEvenOdd(now) {
 
   // Current date and time in Owatonna
   const nowString = 
@@ -18,8 +17,17 @@ function loadEvenOdd() {
   document.getElementById("parkExplanation").innerHTML = parkingDeets.get('parkExplanation');
 }
 
+function loadLights(now) {
+  if (now.getMonth() == 11 && now.getDate() <= 25) {
+    document.querySelector(".line").style.display = 'none';
+    document.querySelector(".lights").style.display = '';
+  }
+}
+
 window.onload = function() {
-  loadEvenOdd();
+  const now = new Date();
+  loadEvenOdd(now);
+  loadLights(now);
 }
 
 // This works for most cases
