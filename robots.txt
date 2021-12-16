@@ -1,2 +1,4 @@
+Sitemap: https://www.owatonnaparking.com/sitemap.xml
+
 User-agent: *
 Disallow:
